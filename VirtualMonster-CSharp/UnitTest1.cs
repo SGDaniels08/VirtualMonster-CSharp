@@ -34,6 +34,7 @@ namespace VirtualMonster_CSharpTests
             VirtualMonster testMonster = new VirtualMonster("Quirgle");
 
             // Assertions
+            Assert.AreEqual(100, testMonster.Health);
             Assert.AreEqual(50, testMonster.Hunger);
             Assert.AreEqual(50, testMonster.Sleepiness);
             Assert.AreEqual(50, testMonster.Thirst);
@@ -45,7 +46,7 @@ namespace VirtualMonster_CSharpTests
         public void FullConstructorSetsNameCorrectly()
         {
             // Arrangement and Activation
-            VirtualMonster testMonster = new VirtualMonster("Zarflok", 19, 66, 37, 21, 4);
+            VirtualMonster testMonster = new VirtualMonster("Zarflok", 95, 19, 66, 37, 21, 4);
 
             // Assertion
             Assert.AreEqual("Zarflok", testMonster.Name);
@@ -55,9 +56,10 @@ namespace VirtualMonster_CSharpTests
         public void FullConstructorSetsAttributesCorrectly()
         {
             // Arrangement and Activation
-            VirtualMonster testMonster = new VirtualMonster("Zarflok", 19, 66, 37, 21, 4);
+            VirtualMonster testMonster = new VirtualMonster("Zarflok", 95, 19, 66, 37, 21, 4);
 
             // Assertions
+            Assert.AreEqual(95, testMonster.Health);
             Assert.AreEqual(19, testMonster.Sleepiness);
             Assert.AreEqual(66, testMonster.Hunger);
             Assert.AreEqual(37, testMonster.Thirst);
@@ -102,7 +104,7 @@ namespace VirtualMonster_CSharpTests
         public void TickMethodDoesNotRaiseAttributesOverOneHundred()
         {
             // Arrangment
-            VirtualMonster testMonster = new VirtualMonster("Gragnoff", 98, 98, 98, 100, 50);
+            VirtualMonster testMonster = new VirtualMonster("Gragnoff", 99, 98, 98, 98, 100, 50);
 
             // Activation
             testMonster.Tick();
@@ -118,13 +120,36 @@ namespace VirtualMonster_CSharpTests
         public void TickMethodCanRaiseRageAboveOneHundred()
         {
             // Arrangment
-            VirtualMonster testMonster = new VirtualMonster("Burzurz", 98, 98, 98, 100, 97);
+            VirtualMonster testMonster = new VirtualMonster("Burzurz", 82, 98, 98, 98, 100, 97);
 
             // Activation
             testMonster.Tick();
 
             // Assertion
             Assert.IsTrue(testMonster.Rage > 100);
+        }
+
+        [TestMethod]
+        public void HungerAtOneHundredReducesHealthByTen()
+        {
+            // Arrangemenet
+            VirtualMonster testMonster = new VirtualMonster("Frabbleb", 46, 98, 76, 44, 56, 75);
+
+            // Activation
+            testMonster.Tick();
+
+            // Assertion
+            Assert.AreEqual(36, testMonster.Health);
+        }
+    }
+
+    [TestClass]
+    public class VirtualMonsterPenTests
+    {
+        [TestMethod]
+        public void VirtualMonsterPenInstanceCreatesSuccessfully()
+        {
+
         }
     }
 }
