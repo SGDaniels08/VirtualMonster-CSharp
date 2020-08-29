@@ -190,7 +190,14 @@ namespace VirtualMonster_CSharpTests
         [TestMethod]
         public void VirtualMonsterPenInstanceCreatesSuccessfully()
         {
+            // Arrangement and Activation
+            VirtualMonsterPen testPen = new VirtualMonsterPen();
 
+            // Assertion
+            Assert.IsInstanceOfType(testPen, typeof(VirtualMonsterPen));
         }
+
+        [TestMethod]
+        public void 
     }
 }
