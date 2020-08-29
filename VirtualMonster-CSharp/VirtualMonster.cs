@@ -19,6 +19,8 @@ namespace VirtualMonsterClasses
 		public int Bathroom { get; private set; }
 		private int rage;
 		public int Rage { get; private set; }
+		private bool isAlive;
+		public bool IsAlive { get; private set; }
 
 		// Constructors
 		public VirtualMonster()
@@ -34,6 +36,7 @@ namespace VirtualMonsterClasses
 			this.Thirst = 50;
 			this.Bathroom = 25;
 			this.Rage = 0;
+			this.IsAlive = true;
 		}
 
 		public VirtualMonster(string name, int health, int sleepiness, int hunger, int thirst, int bathroom, int rage)
@@ -45,6 +48,7 @@ namespace VirtualMonsterClasses
 			this.Thirst = thirst;
 			this.Bathroom = bathroom;
 			this.Rage = rage;
+			this.IsAlive = true;
         }
 
 		// Other methods
@@ -95,6 +99,13 @@ namespace VirtualMonsterClasses
 				Health -= 10; 
 			//	Bathroom = 0;	// And make a mess
 			}
+
+			if (this.Health <= 0) { Die(); }
+        }
+
+		public void Die()
+        {
+			this.IsAlive = false;
         }
 	}
 }

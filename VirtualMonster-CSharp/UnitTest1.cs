@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Security.Cryptography.X509Certificates;
 using VirtualMonsterClasses;
 
 namespace VirtualMonster_CSharpTests
@@ -140,6 +141,46 @@ namespace VirtualMonster_CSharpTests
 
             // Assertion
             Assert.AreEqual(36, testMonster.Health);
+        }
+
+        [TestMethod]
+        public void ThirstAtOneHundredReducesHealthByTen()
+        {
+            // Arrangemenet
+            VirtualMonster testMonster = new VirtualMonster("Uuuug", 58, 77, 98, 14, 39, 12);
+
+            // Activation
+            testMonster.Tick();
+
+            // Assertion
+            Assert.AreEqual(48, testMonster.Health);
+        }
+
+        [TestMethod]
+        public void SleepinessAndBathroomAtOneHundredReducesHealthByTwentyTotal()
+        {
+            // Arrangemenet
+            VirtualMonster testMonster = new VirtualMonster("Ragelok", 66, 100, 77, 20, 100, 87);
+
+            // Activation
+            testMonster.Tick();
+
+            // Assertion
+            Assert.AreEqual(46, testMonster.Health);
+        }
+
+        [TestMethod]
+        public void HealthAtZeroMonsterDies()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("TestMonster", 10, 50, 50, 99, 50, 50);
+
+            // Activation
+            testMonster.Tick();
+
+            // Assertion
+            Assert.AreEqual(0, testMonster.Health);
+            Assert.AreEqual(false, testMonster.IsAlive);
         }
     }
 
