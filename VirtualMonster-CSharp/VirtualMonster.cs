@@ -102,6 +102,30 @@ namespace VirtualMonsterClasses
 
 			if (this.Health <= 0) { Die(); }
         }
+		/*
+		Add vessel to eat / drink from:
+		public void Eat(Vessel container) {}
+		public void Drink(Vessel container) {}
+		public void Potty() {}
+		public void Fight(VirtualMonster opponent) {}
+
+		*/
+		public void Eat()
+        {
+			this.Hunger -= 40;
+			this.Bathroom += 15;
+        }
+
+		public void Drink()
+        {
+			this.Thirst -= 40;
+			this.Bathroom += 15;
+        }
+
+		public void Potty()
+        {
+			this.Bathroom = 0;
+        }
 
 		public void Die()
         {

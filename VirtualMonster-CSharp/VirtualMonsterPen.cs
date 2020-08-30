@@ -23,6 +23,8 @@ public class VirtualMonsterPen
         {
 			newPen.Add(m.Name, m);
         }
+
+		this.MonsterPen = newPen;
     }
 
 	public VirtualMonsterPen(Dictionary<string, VirtualMonster> monsterPen)

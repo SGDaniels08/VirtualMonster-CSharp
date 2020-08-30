@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using VirtualMonsterClasses;
 
@@ -185,6 +186,75 @@ namespace VirtualMonster_CSharpTests
     }
 
     [TestClass]
+    public class VirtualMonsterActionMethods
+    {
+        [TestMethod]
+        public void EatReducesHungerByForty()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testo");
+
+            // Activation
+            testMonster.Eat();
+
+            // Assertion
+            Assert.AreEqual(10, testMonster.Hunger);
+        }
+
+        [TestMethod]
+        public void EatIncreasesBathroomByFifteen()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testo");
+
+            // Activation
+            testMonster.Eat();
+
+            // Assertion
+            Assert.AreEqual(40, testMonster.Bathroom);
+        }
+
+        [TestMethod]
+        public void DrinkReducesThirstByForty()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testo");
+
+            //Activation
+            testMonster.Drink();
+
+            // Assertion
+            Assert.AreEqual(10, testMonster.Thirst);
+        }
+
+        [TestMethod]
+        public void DrinkIncreasesBathroomByFifteen()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testo");
+
+            //Activation
+            testMonster.Drink();
+
+            // Assertion
+            Assert.AreEqual(40, testMonster.Bathroom);
+        }
+
+        [TestMethod]
+        public void PottyReducesBathroomToZero()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testo");
+
+            //Activation
+            testMonster.Potty();
+
+            // Assertion
+            Assert.AreEqual(0, testMonster.Bathroom);
+        }
+    }
+
+    [TestClass]
     public class VirtualMonsterPenTests
     {
         [TestMethod]
@@ -197,7 +267,22 @@ namespace VirtualMonster_CSharpTests
             Assert.IsInstanceOfType(testPen, typeof(VirtualMonsterPen));
         }
 
+        /*
         [TestMethod]
-        public void 
+        public void VirtualMonsterPenConstructorWithDictionaryWorks()
+        {
+            // Arrangment
+            VirtualMonster testMonster1 = new VirtualMonster("Borzong");
+            VirtualMonster testMonster2 = new VirtualMonster("Guflap");
+            Dictionary<string, VirtualMonster> testPen = new Dictionary<string, VirtualMonster>();
+            testPen.Add(testMonster1.Name, testMonster1);
+            testPen.Add(testMonster2.Name, testMonster2);
+
+            // Activation
+            VirtualMonsterPen testMonsterPen = new VirtualMonsterPen(testPen);
+
+            // Assertion
+            
+        } */
     }
 }
