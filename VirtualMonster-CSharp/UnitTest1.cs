@@ -252,6 +252,53 @@ namespace VirtualMonster_CSharpTests
             // Assertion
             Assert.AreEqual(0, testMonster.Bathroom);
         }
+
+        [TestMethod]
+        public void SleepReducesSleepinessToZero()
+        {
+            // Arrangement
+            VirtualMonster testMonster = new VirtualMonster("Testy");
+
+            // Activation
+            testMonster.Sleep();
+
+            // Assertion
+            Assert.AreEqual(0, testMonster.Sleepiness);
+        }
+
+        [TestMethod]
+        public void FightReducesRageOfInstigatorByFifty()
+        {
+            // Arrangement
+            VirtualMonster instigator = new VirtualMonster("Instigator", 75, 75, 75, 75, 75, 75);
+            VirtualMonster opponent = new VirtualMonster("Opponent");
+
+            // Activation
+            instigator.Fight(opponent);
+
+            // Assertion
+            Assert.AreEqual(25, instigator.Rage);
+        }
+
+        [TestMethod]
+        public void FightIncreasesRageOfOpponenetByTwenty()
+        {
+            // Arrangement
+            VirtualMonster instigator = new VirtualMonster("Instigator", 75, 75, 75, 75, 75, 75);
+            VirtualMonster opponent = new VirtualMonster("Opponent", 75, 75, 75, 75, 75, 50);
+
+            // Activation
+            instigator.Fight(opponent);
+
+            // Assertion
+            Assert.AreEqual(70, opponent.Rage);
+        }
+    }
+
+    [TestClass]
+    public class VirtualMonsterRandomTests
+    {
+
     }
 
     [TestClass]
@@ -284,5 +331,15 @@ namespace VirtualMonster_CSharpTests
             // Assertion
             
         } */
+
+        [TestMethod]
+        public void RetrieveAllMonstersReturnsAList()
+        {
+            // Arrangement
+
+            // Activation
+
+            // Assertion
+        }
     }
 }

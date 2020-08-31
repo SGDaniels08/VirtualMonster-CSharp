@@ -84,6 +84,16 @@ namespace VirtualMonsterClasses
 				this.Rage += 5;
 			}
 
+			// Animal self-determination - prioritize bathroom, thirst, hunger, sleepiness
+			Random rndm = new Random();
+			if (rndm.Next(0, 10) > 5)
+			{
+				if (this.Bathroom > 60 && rndm.Next(0, 10) > 8) { this.Potty(); }
+				if (this.Thirst > 75 && rndm.Next(0, 10) > 8) { this.Drink(); }
+				if (this.Hunger > 75 && rndm.Next(0, 10) > 8) { this.Eat(); }
+				if (this.Sleepiness > 60 && rndm.Next(0, 10) > 8) { this.Sleep(); }
+			}
+
 			// Check for special behaviors based on attributes
 			this.CheckSpecialBehaviors();
 		}
@@ -106,7 +116,7 @@ namespace VirtualMonsterClasses
 		Add vessel to eat / drink from:
 		public void Eat(Vessel container) {}
 		public void Drink(Vessel container) {}
-		public void Potty() {}
+		public void Potty(Vessel latrine) {}
 		public void Fight(VirtualMonster opponent) {}
 
 		*/
@@ -125,6 +135,17 @@ namespace VirtualMonsterClasses
 		public void Potty()
         {
 			this.Bathroom = 0;
+        }
+
+		public void Sleep()
+        {
+			this.Sleepiness = 0;
+        }
+
+		public void Fight(VirtualMonster opponent)
+        {
+			this.Rage -= 50;
+			opponent.Rage += 20;
         }
 
 		public void Die()

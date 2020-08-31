@@ -32,7 +32,18 @@ public class VirtualMonsterPen
 		this.MonsterPen = monsterPen;
     }
 
-	// Other methods
-
+	// Service methods
+	public List<VirtualMonster> RetrieveAllMonsters()
+    {
+		List<VirtualMonster> monstersInPen = new List<VirtualMonster>();
+		foreach(VirtualMonster monster in this.MonsterPen.Values) 
+		{
+			monstersInPen.Add(monster);
+		}
+		return monstersInPen;
+    }
 	/* one for each attribute: feed, play, refill, add pet, remove pet */
+	// public List RetrieveAllMonsters()
+	// public VirtualMonster RetrieveMonsterByName(string name)
+	// public static void PenTick() { ...; iterate through Dictionary and .Tick() each }
 }
